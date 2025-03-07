@@ -17,7 +17,7 @@ RUN FC_SETTINGS="./configs/settings/<NAME OF SETTINGS FILE>" FC_TEMPLATES="./con
 
 WORKDIR /home
 
-FROM devopsfaith/krakend:2.1.2 as final
+FROM devopsfaith/krakend:2.9.1 as final
 
 COPY --chown=krakend:krakend --from=base /home/krakend.json /etc/krakend/
 
