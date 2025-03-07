@@ -1,6 +1,6 @@
 # ubuntu-based-krakend
 
-[Krakend version 2.1.2](https://www.krakend.io/) on top of Ubuntu in [Docker container](https://hub.docker.com/r/candeemis/ubuntu-based-krakend)
+[Krakend version 2.9.1](https://www.krakend.io/) on top of Ubuntu in [Docker container](https://hub.docker.com/r/candeemis/ubuntu-based-krakend)
 
 This image can be used as a base image in multi-staged builds for preprocessing/compiling Krakend configs e.g flexible configuration in order to use them in the later/final stage in production.
 
