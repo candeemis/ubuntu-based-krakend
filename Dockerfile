@@ -1,14 +1,13 @@
-FROM ubuntu:20.04 as base
+FROM ubuntu:24.04 as base
 
-RUN apt-get update && apt-get install -y curl
+# sudo su
+RUN apt install -y ca-certificates gnupg && \
+    apt-key adv --keyserver keyserver.ubuntu.com --recv 5DE6FD698AD6FDD2 && \
+    echo "deb https://repo.krakend.io/apt stable main" \
+       | tee /etc/apt/sources.list.d/krakend.list && \
+    apt-get update && \
+    apt-get install -y krakend=2.9.1
 
-RUN mkdir downloads
-
-RUN curl --silent -o /downloads/krakend_2.1.2_amd64.tar.gz https://repo.krakend.io/bin/krakend_2.1.2_amd64.tar.gz
-
-RUN mkdir /etc/krakend
-
-RUN tar -xzf /downloads/krakend_2.1.2_amd64.tar.gz -C /etc/krakend/
 
 FROM ubuntu:20.04 as final
 
