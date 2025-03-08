@@ -1,16 +1,18 @@
-FROM ubuntu:20.04 as base
+FROM ubuntu:24.04 AS base
 
 RUN apt-get update && apt-get install -y curl
 
 RUN mkdir downloads
 
-RUN curl --silent -o /downloads/krakend_2.1.2_amd64.tar.gz https://repo.krakend.io/bin/krakend_2.1.2_amd64.tar.gz
+FROM base AS base2
+
+RUN curl --silent -o /downloads/krakend_2.9.1_amd64_generic-linux.tar.gz https://repo.krakend.io/bin/krakend_2.9.1_amd64_generic-linux.tar.gz
 
 RUN mkdir /etc/krakend
 
-RUN tar -xzf /downloads/krakend_2.1.2_amd64.tar.gz -C /etc/krakend/
+RUN tar -xzf /downloads/krakend_2.9.1_amd64_generic-linux.tar.gz -C /etc/krakend/
 
-FROM ubuntu:20.04 as final
+FROM ubuntu:24.04 AS final
 
-COPY --from=base /etc/krakend /etc/krakend
+COPY --from=base2 /etc/krakend /etc/krakend
 
