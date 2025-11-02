@@ -1,8 +1,8 @@
 # ubuntu-based-krakend
 
-[Krakend version 2.9.1](https://www.krakend.io/) on top of Ubuntu in [Docker container](https://hub.docker.com/r/candeemis/ubuntu-based-krakend)
+[Krakend version 2.12.0](https://www.krakend.io/) on top of Ubuntu in [Docker container](https://hub.docker.com/r/candeemis/ubuntu-based-krakend)
 
-This image can be used as a base image in multi-staged builds for preprocessing/compiling Krakend configs e.g flexible configuration in order to use them in the later/final stage in production.
+This image can be used as a base image in multi-staged builds for pre-processing/compiling Krakend configs e.g flexible configuration in order to use them in the later/final stage in production.
 
 ℹ️ `krakend` executable is available in `/etc/krakend/usr/bin` directory.
 
@@ -17,7 +17,7 @@ RUN FC_SETTINGS="./configs/settings/<NAME OF SETTINGS FILE>" FC_TEMPLATES="./con
 
 WORKDIR /home
 
-FROM devopsfaith/krakend:2.9.1 as final
+FROM krakend:2.12.0 as final
 
 COPY --chown=krakend:krakend --from=base /home/krakend.json /etc/krakend/
 
